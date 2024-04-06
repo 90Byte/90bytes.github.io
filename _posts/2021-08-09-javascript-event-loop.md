@@ -15,7 +15,7 @@ It's often said that JavaScript is a single-threaded language. However, at one t
 # Concurrency !== Threads
 First, what are threads? Abstractly, a thread refers to a single sequence of work. In programming, we often know the concept of call stacks. When a function is called, it stacks on the call stack, and if another function is called inside, it stacks on top again. Our program ends when the call stack is ultimately popped; it returns the main's return value from the program's entry point to the operating system.
 
-Technically, a single sequence of work means executing functions sequentially using a call stack. Multi-threading means having multiple sequences of work and switching between these sequences rapidly to perform tasks. With a typical approach similar to other languages, one might compulsively feel that concurrent tasks should be placed on threads.
+Technically, a single sequence of work means executing functions sequentially using a call stack. Multi-threading means having multiple sequences of work and switching between these sequences rapidly to perform tasks. With a typical approach similar to other languages, one might compulsively feel that concurrent tasks[^1] should be placed on threads.
 
 However, using threads is just one tool to implement concurrent tasks.
 
@@ -25,7 +25,7 @@ Let's go back to the origins of JavaScript. JavaScript was initially created for
 
 So, how does JavaScript operate? It pulls tasks from a task queue called the event loop and performs them in a single call stack. Once a task on the call stack is completely finished, it fetches the next task from the queue.
 
-Then how about heavy operations like I/O? This is handled by Web API, which functions like libc for JavaScript, processing these operations in threads hidden behind the JavaScript engine, and responding with callbacks. Precisely, it starts a task with a callback by inserting it into the event loop task queue. JavaScript frequently uses patterns like this:
+Then how about heavy operations like I/O? This is handled by Web API[^2], which functions like libc for JavaScript, processing these operations in threads hidden behind the JavaScript engine, and responding with callbacks[^3]. Precisely, it starts a task with a callback by inserting it into the event loop task queue. JavaScript frequently uses patterns like this:
 ```javascript
 setTimeout(function(){
 // some task..
@@ -34,7 +34,7 @@ setTimeout(function(){
 
 In reality, this pattern is about placing content you don't want to execute in the current call stack into the event loop task queue using the Web API. It's not about executing concurrent work like threads.
 
-This topic is detailed in [a well-known keynote](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html). In essence, JavaScript being single-threaded is from the developer's level perspective, but in reality, it uses multiple threads. However, developers cannot create deadlocks as they would in other languages using the traditional approach. Thanks to these callbacks, closures in JavaScript could become rapidly popular. If a callback can access the environment in which it was created, developers can sequentially understand asynchronous work flows, such as:
+This topic is detailed in [a well-known keynote](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html). In essence, JavaScript being single-threaded is from the developer's level perspective, but in reality, it uses multiple threads. However, developers cannot create deadlocks as they would in other languages using the traditional approach[^4]. Thanks to these callbacks, closures[^5] in JavaScript could become rapidly popular. If a callback can access the environment in which it was created, developers can sequentially understand asynchronous work flows, such as:
 ```
 function A(someVar){
 	someAPI(function(someResponse) { // this is callback
@@ -101,7 +101,7 @@ async function asyncCall() {
 asyncCall();
 ```
 
-Functions prefixed with the async keyword become async functions. The returned value of an async function is considered resolved for a Promise, and errors thrown are catchable like in a try{} catch{} block. Calling an async function in a non-async context returns a Promise object, not the returned value. Within an async function, Promise objects can be treated like functions, and the await keyword allows for waiting for a value, effectively handling rejected errors from Promises. Thus, async functions enable understanding asynchronous tasks performed as Promises in a more natural, synchronous flow.
+Functions prefixed with the async keyword become async functions. The returned value of an async function is considered resolved for a Promise, and errors thrown are catchable like in a try{} catch{} block. Calling an async function in a non-async context returns a Promise object, not the returned value. Within an async function, Promise objects can be treated like functions, and the await keyword allows for waiting[^6] for a value, effectively handling rejected errors from Promises. Thus, async functions enable understanding asynchronous tasks performed as Promises in a more natural, synchronous flow.
 
 To operate like the setTimeout example with Promises, you can write as follows:
 ```javascript

@@ -516,11 +516,7 @@ Thus, we have looked into React's reconciliation process to some extent. While I
 content, I hope this post helps in understanding.
 
 [^1]: The term efficient here means rendering efficiency.
-[^2]: In fact, jsx should be considered as syntactic sugar provided to alleviate the inconvenience of UI creation
-using `React.createElement`. The essence is ultimately in the React API!
-[^3]: One might wonder why animations are among the operations with the highest priority. It's important to remember
-that the most crucial thing in the frontend is ensuring the user does not experience any jitters, emphasizing UX.
-[^4]: Such priority issues occur not only in React but also in general JavaScript applications, and the Web API created
-to supplement this
-is [window.requestIdleCallback()](https://developer.mozilla.org/ko/docs/Web/API/Window/requestIdleCallback), [window.requestAnimationFrame()](https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame).
+[^2]: In fact, jsx should be considered as syntactic sugar provided to alleviate the inconvenience of UI creation using `React.createElement`. The essence is ultimately in the React API!
+[^3]: One might wonder why animations are among the operations with the highest priority. It's important to remember that the most crucial thing in the frontend is ensuring the user does not experience any jitters, emphasizing UX.
+[^4]: Such priority issues occur not only in React but also in general JavaScript applications, and the Web API created to supplement this is [window.requestIdleCallback()](https://developer.mozilla.org/ko/docs/Web/API/Window/requestIdleCallback), [window.requestAnimationFrame()](https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame).
 [^5]: If we pull this into a concept of functional programming, it's called a pure function.
