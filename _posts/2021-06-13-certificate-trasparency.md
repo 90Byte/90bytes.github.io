@@ -3,6 +3,7 @@ title: "Post: Cert Transparency #1 - PKI and Cert Transparency"
 last_modified_at: 2021-06-13T11:00:24+0900
 categories:
   - Blog
+featuredPost: true
 tags:
   - PKI
   - Cert Transparency

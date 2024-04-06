@@ -1,8 +1,9 @@
 ---
-title: "Post: UDP Packet Tampering"
+title: "Post: Why UDP Packets Can Be Tampered With"
 last_modified_at: 2021-06-16T09:54:00+0900
 categories:
   - Blog
+featuredPost: true
 tags:
   - Network
   - UDP

@@ -3,6 +3,7 @@ title: "Post: React Reconciliation"
 last_modified_at: 2021-06-16T12:58:39+0900
 categories:
   - Blog
+featuredPost: true
 tags:
   - React
   - Reconciliation

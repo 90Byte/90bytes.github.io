@@ -3,6 +3,7 @@ title: "Post: [JS] event loop, Task"
 last_modified_at: 2021-08-09T01:20:37+0900
 categories:
   - Blog
+featuredPost: true
 tags:
   - JavaScript
   - event loop

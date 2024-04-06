@@ -56,7 +56,7 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name: "Minseok Martin Seo"
+  name: "Martin Minseok Seo"
   avatar: "/assets/images/bio-photo.jpg"
   bio: "A full-stack developer who loves to learn and share knowledge."
   links:
@@ -98,7 +98,7 @@ defaults:
 
 category_archive:
   type: liquid
-  path: /categories/
+  path: /featured/
 tag_archive:
   type: liquid
   path: /tags/
