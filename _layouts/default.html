@@ -10,6 +10,7 @@
 -->
 <html lang="{{ site.locale | slice: 0,2 | default: "en" }}" class="no-js">
   <head>
+    {% include cookie-consent.html %}
     {% include head.html %}
     {% include head/custom.html %}
   </head>
@@ -36,6 +37,5 @@
     </div>
 
     {% include scripts.html %}
-    {% include cookie-consent.html %}
   </body>
 </html>
